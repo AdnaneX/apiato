@@ -72,7 +72,8 @@ abstract class Transformer extends FractalTransformer
     {
         // set a default resource key if none is set
         if (!$resourceKey && $data->isNotEmpty()) {
-            $resourceKey = (string) $data->modelKeys()[0];
+            $modelKeys = $data->modelKeys();
+            $resourceKey = (string)$modelKeys[array_keys($modelKeys)[0]];
         }
 
         return parent::collection($data, $transformer, $resourceKey);
